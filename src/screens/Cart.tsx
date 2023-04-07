@@ -8,6 +8,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   FlatList,
+  useColorScheme,
 } from "react-native";
 import { useContext, useMemo, useCallback } from "react";
 import { ProductContext } from "../Context/ProductContext";
@@ -15,6 +16,7 @@ import { IProductCart, deleteProductsCart } from "../features/cart";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/Root";
+import Colors from "../../constants/colors";
 
 interface IPropsCartItem {
   item: IProductCart;
@@ -22,27 +24,38 @@ interface IPropsCartItem {
 }
 
 const CartItem = ({ item, onPress }: IPropsCartItem) => {
+  const theme = useColorScheme();
+
   return (
     <TouchableOpacity
       style={{
         marginVertical: 10,
         borderBottomWidth: StyleSheet.hairlineWidth,
+        borderBottomColor: Colors[theme!].text + 80,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
+        flexWrap: "wrap",
       }}
       onPress={onPress}
     >
       <View style={{ flexDirection: "row" }}>
-        <Image
-          source={{ uri: item.image }}
+        <View
           style={{
-            width: 50,
-            height: 50,
-            borderRadius: 25,
-            resizeMode: "contain",
+            backgroundColor: "white",
+            borderRadius: 12,
+            marginBottom: 5,
           }}
-        />
+        >
+          <Image
+            source={{ uri: item.image }}
+            style={{
+              width: 50,
+              height: 50,
+              resizeMode: "contain",
+            }}
+          />
+        </View>
         <View style={{ marginLeft: 15 }}>
           <MyText type="body" style={{ fontWeight: "500" }}>
             {item.name}

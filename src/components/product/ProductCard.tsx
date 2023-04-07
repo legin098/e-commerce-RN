@@ -44,7 +44,12 @@ export const ProductCard = (product: IProduct) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: colorScheme === "light" ? "white" : "#f2f2f4" },
+      ]}
+    >
       <TouchableOpacity onPress={handlePressProduct}>
         <View style={styles.containerImage}>
           <Image
@@ -53,7 +58,9 @@ export const ProductCard = (product: IProduct) => {
           />
         </View>
         <View>
-          <MyText type="title">{product.name}</MyText>
+          <MyText type="title" style={{ color: "black", marginTop: 10 }}>
+            {product.name}
+          </MyText>
           <View
             style={{
               marginTop: 20,
@@ -61,16 +68,20 @@ export const ProductCard = (product: IProduct) => {
             }}
           >
             <View style={{ flexDirection: "row" }}>
-              <MyText type="body" style={{ fontWeight: "600" }}>
+              <MyText type="body" style={{ fontWeight: "600", color: "black" }}>
                 Disponible:
               </MyText>
-              <MyText type="body">{product.stock}</MyText>
+              <MyText type="body" style={{ color: "black" }}>
+                {product.stock}
+              </MyText>
             </View>
             <View style={{ flexDirection: "row" }}>
-              <MyText type="body" style={{ fontWeight: "600" }}>
+              <MyText type="body" style={{ fontWeight: "600", color: "black" }}>
                 Valor unitario:
               </MyText>
-              <MyText type="body">{product.unit_price}</MyText>
+              <MyText type="body" style={{ color: "black" }}>
+                {product.unit_price}
+              </MyText>
             </View>
           </View>
         </View>
@@ -86,15 +97,17 @@ export const ProductCard = (product: IProduct) => {
         <AntDesign
           name="minuscircleo"
           size={24}
-          color={colorScheme === "light" ? "black" : "white"}
+          color={"black"}
           onPress={handleClickLess}
           disabled={quantity <= 0}
         />
-        <MyText type="body">{quantity}</MyText>
+        <MyText type="body" style={{ color: "black" }}>
+          {quantity}
+        </MyText>
         <AntDesign
           name="pluscircleo"
           size={24}
-          color={colorScheme === "light" ? "black" : "white"}
+          color={"black"}
           onPress={handleClickAdd}
           disabled={quantity >= product.stock}
         />
@@ -106,10 +119,9 @@ export const ProductCard = (product: IProduct) => {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    backgroundColor: "white",
     borderRadius: 24,
     padding: 20,
-    marginVertical: 20,
+    marginVertical: 15,
   },
   containerImage: {
     backgroundColor: "white",

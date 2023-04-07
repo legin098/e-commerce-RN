@@ -1,5 +1,5 @@
 import { MyText } from "../components/MyText";
-import { View } from "../components/themed/Themed";
+import { ScrollView } from "../components/themed/Themed";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import {
   Image,
@@ -33,12 +33,20 @@ export const ProductDetail = () => {
   const quantity = currentProductCart?.quantity || 0;
 
   return (
-    <View style={{ margin: 10 }}>
-      <Image
-        source={{ uri: productDetail.image }}
-        style={{ width: "100%", height: 270, resizeMode: "contain" }}
-      />
-      <DefaultView>
+    <ScrollView style={{ marginHorizontal: 10 }}>
+      <DefaultView
+        style={{
+          backgroundColor: "white",
+          borderRadius: 12,
+          marginTop: 10,
+        }}
+      >
+        <Image
+          source={{ uri: productDetail.image }}
+          style={{ width: "100%", height: 270, resizeMode: "contain" }}
+        />
+      </DefaultView>
+      <DefaultView style={{ marginTop: 10 }}>
         <MyText
           type="title"
           style={{
@@ -57,6 +65,7 @@ export const ProductDetail = () => {
           flexDirection: "row",
           justifyContent: "space-between",
           marginTop: 20,
+          flexWrap: "wrap",
         }}
       >
         <MyText type="body" style={{ fontWeight: "500" }}>
@@ -107,6 +116,6 @@ export const ProductDetail = () => {
         style={{ marginVertical: 40 }}
         onPress={() => navigation.navigate("Cart")}
       />
-    </View>
+    </ScrollView>
   );
 };
