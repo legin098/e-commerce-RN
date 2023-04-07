@@ -71,20 +71,23 @@ export const Auth = ({ navigation }: IProps) => {
       <MyText type="title" style={{ marginBottom: 30 }}>
         Login
       </MyText>
-      <MyInput label={"Email"} onChangeText={(text) => setEmail(text)} />
       <MyInput
-        label={"Password"}
+        label={"Correo electronico"}
+        onChangeText={(text) => setEmail(text)}
+      />
+      <MyInput
+        label={"Contraseña"}
         secureTextEntry
         onChangeText={(text) => setPassword(text)}
       />
 
       <MyButton
-        title={"Sign In"}
+        title={"Iniciar sesion"}
         onPress={handleSignIn}
         style={{ marginTop: 20 }}
       />
       <MyButton
-        title={"Sign Up"}
+        title={"Registrarse"}
         type={"secondary"}
         onPress={handleCreateAccount}
       />

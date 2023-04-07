@@ -1,4 +1,4 @@
-import { useContext, useLayoutEffect } from "react";
+import { useContext, useEffect } from "react";
 import { ProductCard } from "../components/product/ProductCard";
 import { ProductContext } from "../Context/ProductContext";
 import { useAppSelector } from "../hooks/hooks";
@@ -8,7 +8,7 @@ export const Home = () => {
   const { getAllProducts, loadCartFromStorage } = useContext(ProductContext);
   const { products } = useAppSelector((state) => state.products);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     getAllProducts();
     loadCartFromStorage();
   }, []);

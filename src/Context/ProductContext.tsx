@@ -3,7 +3,11 @@ import { ApiEcommerce } from "../api/ApiEcommerce";
 import { useAppDispatch } from "../hooks/hooks";
 import { setProductDetail, setProducts } from "../features/products";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ICartState, deleteProductsCart, loadCartFromStorage as loadCartFromStorageRedux } from "../features/cart";
+import {
+  ICartState,
+  deleteProductsCart,
+  loadCartFromStorage as loadCartFromStorageRedux,
+} from "../features/cart";
 import { dataDummy } from "../api/data";
 import { dataDummyBuy } from "../api/dataBuy";
 
@@ -53,14 +57,14 @@ export const ProductProvider = ({ children }: any) => {
     try {
       const response = await ApiEcommerce.post("buy", cart);
       dispatch(setProducts(response.data.products));
-      dispatch(deleteProductsCart())
+      dispatch(deleteProductsCart());
     } catch (error) {
-      console.log("buyProducts error", error)
+      console.log("buyProducts error", error);
       //Solucion temporal porque la api no responde
       dispatch(setProducts(dataDummyBuy.products));
-      dispatch(deleteProductsCart())
+      dispatch(deleteProductsCart());
     }
-  }
+  };
 
   return (
     <ProductContext.Provider
@@ -68,7 +72,7 @@ export const ProductProvider = ({ children }: any) => {
         getAllProducts,
         getDetailProduct,
         loadCartFromStorage,
-        buyProducts
+        buyProducts,
       }}
     >
       {children}

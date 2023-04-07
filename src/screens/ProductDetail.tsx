@@ -60,10 +60,10 @@ export const ProductDetail = () => {
         }}
       >
         <MyText type="body" style={{ fontWeight: "500" }}>
-          In stock: {productDetail.stock}
+          Disponible: {productDetail.stock}
         </MyText>
         <MyText type="body" style={{ fontWeight: "500" }}>
-          Unit price: {productDetail.unit_price}
+          Precio unitario: {productDetail.unit_price}
         </MyText>
       </DefaultView>
       <MyText
@@ -99,6 +99,7 @@ export const ProductDetail = () => {
           size={30}
           color={colorScheme === "light" ? "black" : "white"}
           onPress={handleClickAdd}
+          disabled={quantity >= productDetail.stock}
         />
       </DefaultView>
       <MyButton

@@ -62,13 +62,13 @@ export const ProductCard = (product: IProduct) => {
           >
             <View style={{ flexDirection: "row" }}>
               <MyText type="body" style={{ fontWeight: "600" }}>
-                In Stock:
+                Disponible:
               </MyText>
               <MyText type="body">{product.stock}</MyText>
             </View>
             <View style={{ flexDirection: "row" }}>
               <MyText type="body" style={{ fontWeight: "600" }}>
-                Unit Price:
+                Valor unitario:
               </MyText>
               <MyText type="body">{product.unit_price}</MyText>
             </View>
